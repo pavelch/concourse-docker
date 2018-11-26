@@ -3,7 +3,7 @@ FROM ubuntu:16.04
 RUN apt-get update && apt-get -y install iproute2 ca-certificates file
 
 ADD bin/dumb-init /usr/local/bin
-ADD bin/concourse /usr/local/bin
+ADD bin/concourse_linux_amd64 /usr/local/bin
 
 # volume containing keys to use
 VOLUME /concourse-keys
@@ -28,4 +28,4 @@ ENV CONCOURSE_WORKER_WORK_DIR /worker-state
 ENV CONCOURSE_GARDEN_DNS_PROXY_ENABLE true
 ENV CONCOURSE_WORKER_GARDEN_DNS_PROXY_ENABLE true
 
-ENTRYPOINT ["/usr/local/bin/dumb-init", "/usr/local/bin/concourse"]
+ENTRYPOINT ["/usr/local/bin/dumb-init", "/usr/local/bin/concourse_linux_amd64"]
